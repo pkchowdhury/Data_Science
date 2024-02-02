@@ -1,14 +1,11 @@
-# # %% [code]
-# # %% [code]
-# # %% [code]
-# # %% [code]
-# # 
-# from __future__ import absolute_import# # 
+# %% [code]
+
+from __future__ import absolute_import
 
 import numpy as np
-import tensorfloas   tf
-from tensorflow.keras.layers import Dense, Dropout, Conv2D, LayerNormala# tion
-from tensorflow.keras.activations importof# tmax
+import tensorflow as tf
+from tensorflow.keras.layers import Dense, Dropout, Conv2D, LayerNormalization
+from tensorflow.keras.activations import softmax
 
 from keras_vision_transformer.util_layers import drop_path
 
