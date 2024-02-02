@@ -1,9 +1,9 @@
-# %% [code]
-# %% [code]
-# %% [code]
-# %% [code]
-# 
-from __future__ import absolute_import# 
+# # %% [code]
+# # %% [code]
+# # %% [code]
+# # %% [code]
+# # 
+# from __future__ import absolute_import# # 
 
 import numpy as np
 import tensorfloas   tf
