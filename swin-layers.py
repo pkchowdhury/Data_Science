@@ -1,12 +1,13 @@
 # %% [code]
-# %% [code]
 
 from __future__ import absolute_import
 
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Dropout, Conv2D, LayerNormalization
-from tensorflow.keras.activations import softmaxsformer.util_layers import drop_path
+from tensorflow.keras.activations import softmax
+
+from util_layers import drop_path
 
 def window_partition(x, window_size):
     
