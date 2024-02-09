@@ -17,7 +17,8 @@ def dummy_loader(model_path):
         
     '''
     backbone = keras.models.load_model(model_path, compile=False)
-    W = backbone.get_weightimport numpy as np
+    W = backbone.get_weights()
+    return W
 
 def image_to_array(arrays):
     '''
@@ -45,8 +46,7 @@ def image_to_array(arrays):
     for i, arr in enumerate(arrays):
         out[i] = arr
         
-    return outarray(pix)[..., :channel]
-    return out[:, ::-1, ...]
+    return out
 
 def shuffle_ind(L):
     '''
