@@ -17,43 +17,35 @@ def dummy_loader(model_path):
         
     '''
     backbone = keras.models.load_model(model_path, compile=False)
-    W = backbone.get_weights()
-    return W
+    W = backbone.get_weightimport numpy as np
 
-def image_to_array(filenames, size, channel):
+def image_to_array(arrays):
     '''
-    Converting RGB images to numpy arrays.
+    Converting RGB images represented as ndarrays to a single numpy array.
     
     Input
     ----------
-        filenames: an iterable of the path of image files
-        size: the output size (height == width) of image. 
-              Processed through PIL.Image.NEAREST
-        channel: number of image channels, e.g. channel=3 for RGB.
+        arrays: an iterable of ndarrays representing images
         
     Output
     ----------
-        An array with shape = (filenum, size, size, channel)
+        An array with shape = (num_arrays, height, width, channels)
         
     '''
     
-    # number of files
-    L = len(filenames)
+    # number of arrays
+    num_arrays = len(arrays)
+    
+    # assume all arrays have the same shape
+    size, _, channel = arrays[0].shape
     
     # allocation
-    out = np.empty((L, size, size, channel))
+    out = np.empty((num_arrays, size, size, channel))
     
-    # loop over filenames
-    if channel == 1:
-        for i, name in enumerate(filenames):
-            with Image.open(name) as pixio:
-                pix = pixio.resize((size, size), Image.NEAREST)
-                out[i, ..., 0] = np.array(pix)
-    else:
-        for i, name in enumerate(filenames):
-            with Image.open(name) as pixio:
-                pix = pixio.resize((size, size), Image.NEAREST)
-                out[i, ...] = np.array(pix)[..., :channel]
+    for i, arr in enumerate(arrays):
+        out[i] = arr
+        
+    return outarray(pix)[..., :channel]
     return out[:, ::-1, ...]
 
 def shuffle_ind(L):
